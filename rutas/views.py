@@ -15,13 +15,3 @@ class ArchivoViewSet(viewsets.ModelViewSet):
     """
     queryset = Archivo.objects.all().order_by('ruta')
     serializer_class = ArchivoSerializer
-    def xxperform_create(self, serializer):
-        serializer.save(rutaid=uuid.uuid4(serializer.ruta))
-
-class ArchivoViewSetX(APIView):
-    def post(self, request):
-        serializer = ArchivoSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-
-        serializer.save()
-        #return Response(status=status.HTTP_201_CREATED)
